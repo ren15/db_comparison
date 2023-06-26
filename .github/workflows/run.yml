@@ -17,6 +17,7 @@ jobs:
     - name: run
       run: |
         wget -c https://github.com/ren15/db_comparison/releases/download/0.0.1/binance-futures_trades_2023-01-01_BTCUSDT.csv.zst -o trades.csv.zst
+        ls -lah
         zstd -d trades.csv.zst
         wc -l trades.csv
         ls -lah trades.csv
