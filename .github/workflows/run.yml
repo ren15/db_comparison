@@ -23,8 +23,12 @@ jobs:
         wc -l trades.csv
         ls -lah trades.csv
 
-    - name: python
+    - name: Install python dependencies
       run: |
         python3 -m pip install -U pip
-        pip3 install pandas
+        pip3 install pandas redis
         python3 scripts/read_trades.py
+
+    - name: Run python-redis
+      run: |
+        bash solutions/redis/run.sh
