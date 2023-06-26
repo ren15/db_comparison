@@ -1,0 +1,22 @@
+name: ci
+
+on: push
+
+
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: check system
+      run: |
+        lscpu
+
+    - name: run
+      run: |
+        wget -c https://github.com/ren15/db_comparison/releases/download/0.0.1/binance-futures_trades_2023-01-01_BTCUSDT.csv.zst -o trades.csv.zst
+        zstd -d trades.csv.zst
+        wc -l trades.csv
+        ls -lah trades.csv
